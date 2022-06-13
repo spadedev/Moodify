@@ -1,0 +1,101 @@
+package com.example.finalactivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+
+public class MainActivity extends AppCompatActivity {
+    private ImageButton imgbtn_journal;
+    private ImageButton imgbtn_exercise;
+    private ImageButton imgbtn_covid;
+    private ImageButton imgbtn_chart;
+    private ImageButton imgbtn_seekhelp;
+    private ImageButton imgbtn_options;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imgbtn_journal = (ImageButton) findViewById(R.id.imgbtn_journal);
+        imgbtn_journal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openJournalActivity();
+            }
+        });
+
+        imgbtn_exercise = (ImageButton) findViewById(R.id.imgbtn_exercise);
+        imgbtn_exercise.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openExerciseActivity();
+            }
+        });
+
+        imgbtn_covid = (ImageButton) findViewById(R.id.imgbtn_covid);
+        imgbtn_covid.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openCovidActivity();
+            }
+        });
+
+        imgbtn_chart = (ImageButton) findViewById(R.id.imgbtn_chart);
+        imgbtn_chart.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openMoodChartActivity();
+            }
+        });
+
+        imgbtn_seekhelp = (ImageButton) findViewById(R.id.imgbtn_seekhelp);
+        imgbtn_seekhelp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openSeekHelpActivity();
+            }
+        });
+
+        imgbtn_options = (ImageButton) findViewById(R.id.imgbtn_options);
+        imgbtn_options.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openOptionActivity();
+            }
+        });
+
+    }
+    public void openJournalActivity(){
+        Intent intent = new Intent(this, JournalActivity.class);
+        startActivity(intent);
+    }
+
+    public void openExerciseActivity(){
+        Intent intent = new Intent(this, ExerciseJournal.class);
+        startActivity(intent);
+    }
+
+    public void openCovidActivity(){
+        Intent intent = new Intent(this, CovidActivity.class);
+        startActivity(intent);
+    }
+
+    public void openMoodChartActivity(){
+        Intent intent = new Intent(this, MoodChartActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSeekHelpActivity(){
+        Intent intent = new Intent(this, SeekHelpActivity.class);
+        startActivity(intent);
+    }
+
+    public void openOptionActivity(){
+        Intent intent = new Intent(this, OptionActivity.class);
+        startActivity(intent);
+    }
+}
