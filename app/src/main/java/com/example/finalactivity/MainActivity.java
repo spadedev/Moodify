@@ -1,11 +1,15 @@
 package com.example.finalactivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private ImageButton imgbtn_journal;
@@ -19,6 +23,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.homepage);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.moodchart:
+                        startActivity(new Intent(getApplicationContext()
+                                , MoodChartActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.homepage:
+                        return true;
+                    case R.id.options:
+                        startActivity(new Intent(getApplicationContext()
+                                , OptionActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
 
         imgbtn_journal = (ImageButton) findViewById(R.id.imgbtn_journal);
         imgbtn_journal.setOnClickListener(new View.OnClickListener(){
