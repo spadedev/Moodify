@@ -9,6 +9,8 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,7 +24,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
     RealmResults<Journal> journalList;
 
-    public MyAdapter(Context applicationContext, RealmResults<Journal> journalList) {
+    public MyAdapter(Context context, RealmResults<Journal> journalList) {
+        this.context = context;
+        this.journalList = journalList;
     }
 
     @NonNull
@@ -70,6 +74,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
+
         return journalList.size();
     }
 

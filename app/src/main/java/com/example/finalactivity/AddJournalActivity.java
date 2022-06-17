@@ -20,12 +20,12 @@ public class AddJournalActivity extends AppCompatActivity {
 
         EditText titleInput = findViewById(R.id.titleinput);
         EditText descriptionInput = findViewById(R.id.descriptioninput);
-        MaterialButton savebtn = findViewById(R.id.savejournal);
+        MaterialButton saveBtn = findViewById(R.id.savejournal);
 
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
 
-        savebtn.setOnClickListener(new View.OnClickListener(){
+        saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 String title = titleInput.getText().toString();

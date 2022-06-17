@@ -37,6 +37,7 @@ public class JournalActivity extends AppCompatActivity {
         // Saved journals to appear
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
+
         RealmResults<Journal> journalList = realm.where(Journal.class).sort("createdTime", Sort.DESCENDING).findAll();
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
