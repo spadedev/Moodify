@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FinalActivity</string>
+    <string name="journal">Journal</string>
+    <string name="add_new_journal">Add new journal</string>
 </resources>

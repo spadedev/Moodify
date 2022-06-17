@@ -2,12 +2,21 @@ package com.example.finalactivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
+
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class JournalActivity extends AppCompatActivity {
 
@@ -16,6 +25,35 @@ public class JournalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
 
+// Add new journal activity
+        MaterialButton addjournalbtn = findViewById(R.id.addnewjournalbtn);
+        addjournalbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                startActivity(new Intent(JournalActivity.this, AddJournalActivity.class));
+            }
+        });
+
+        // Saved journals to appear
+        Realm.init(getApplicationContext());
+        Realm realm = Realm.getDefaultInstance();
+        RealmResults<Journal> journalList = realm.where(Journal.class).sort("createdTime", Sort.DESCENDING).findAll();
+
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapter myAdapter = new MyAdapter(getApplicationContext(),journalList);
+        recyclerView.setAdapter(myAdapter);
+
+        journalList.addChangeListener(new RealmChangeListener<RealmResults<Journal>>() {
+            @Override
+            public void onChange(RealmResults<Journal> journals) {
+                myAdapter.notifyDataSetChanged();
+            }
+        });
+
+
+
+// Bottom Navigation Code
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.homepage);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
