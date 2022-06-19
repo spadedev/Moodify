@@ -1,12 +1,16 @@
 package com.example.finalactivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 import io.realm.Realm;
@@ -41,6 +45,32 @@ public class AddJournalActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Journal saved", Toast.LENGTH_SHORT).show();
                 finish();
 
+            }
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.homepage);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.homepage:
+                        startActivity(new Intent(getApplicationContext()
+                                , MainActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.moodchart:
+                        startActivity(new Intent(getApplicationContext()
+                                , MoodChartActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.options:
+                        startActivity(new Intent(getApplicationContext()
+                                , OptionActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
             }
         });
     }
