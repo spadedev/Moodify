@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "108716099504",
+    "project_id": "moodify-bbaf6",
+    "storage_bucket": "moodify-bbaf6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108716099504:android:c260d17eceb49a1afbf875",
+        "android_client_info": {
+          "package_name": "com.example.finalactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108716099504-jnv9533kovaa3vldp6077sl3h37q56t9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmLoRI2n-mOkZHsXLwh0xVV-sNY_Hrul4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108716099504-jnv9533kovaa3vldp6077sl3h37q56t9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
