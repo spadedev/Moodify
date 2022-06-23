@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btn_"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FED000"
+    android:padding="40dp"
+    tools:context=".StartActivity">
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <RelativeLayout
+        android:id="@+id/relativelayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_logo"
+        android:background="@drawable/rounded_corner"
+        android:padding="20dp">
+
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#30FED000"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:ems="30"
+            android:inputType="textEmailAddress"
+            android:text="Email" />
+
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#30FED000"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/input_email"
+            android:layout_centerHorizontal="true"
+            android:ems="20"
+            android:inputType="textPassword"
+            android:text="Password" />
+
+
+        <Button
+            android:id="@+id/button_forgotpass"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/input_password"
+            android:layout_alignParentRight="true"
+            android:background="@color/white"
+            android:text="forgot password?"
+            android:textColor="@color/black"
+            android:textSize="9dp" />
+
+        <Button
+            android:id="@+id/button_signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/radiogroup"
+            android:layout_centerHorizontal="true"
+            android:text="SIGN IN" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/button_forgotpass"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:id="@+id/radioButton_admin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin"
+                android:layout_marginRight="50dp"/>
+
+            <RadioButton
+                android:id="@+id/radioButton_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"/>
+        </RadioGroup>
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ARE YOU A NEW MOODIFY USER?"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/relativelayout2"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/button_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

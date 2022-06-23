@@ -25,4 +25,10 @@
         app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"/>
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
 </RelativeLayout>

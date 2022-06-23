@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalActivity">
         <activity
-            android:name=".AddJournalActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".QuotesActivity"
+            android:name=".AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +24,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".EmotionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddJournalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuotesActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".OptionActivity"
             android:exported="false" />
@@ -41,7 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>
