@@ -7,15 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class QuotesActivity extends AppCompatActivity {
 
     private Button startbtn;
+    private TextView content;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quotes);
+
+        content = findViewById(R.id.quotesmoodify);
+
+        String admincontent = getIntent().getStringExtra("keycontent");
+
+        content.setText(admincontent);
 
         startbtn = (Button) findViewById(R.id.quotesnext);
         startbtn.setOnClickListener(new View.OnClickListener(){

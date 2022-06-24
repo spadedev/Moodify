@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.finalactivity">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalActivity">
+        <activity
+            android:name=".AdminQuotes"
+            android:exported="false" />
+        <activity
+            android:name=".AdminExercise"
+            android:exported="false" />
+        <activity
+            android:name=".AdminDatabase"
+            android:exported="false" />
+        <activity
+            android:name=".AdminSeekHelp"
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -34,7 +46,7 @@
             android:exported="false" />
         <activity
             android:name=".QuotesActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".OptionActivity"
             android:exported="false" />

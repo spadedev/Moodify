@@ -8,12 +8,25 @@
     tools:context=".SeekHelpActivity">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seek Help"
         android:textSize="50sp"
         android:textStyle="italic"
         android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/seekhelptitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"/>
+
+    <TextView
+        android:id="@+id/seekhelpcontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekhelptitle"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -54,7 +54,7 @@
 
 
         <Button
-            android:id="@+id/button_forgotpass"
+            android:id="@+id/button_forgot"
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_below="@+id/input_password"
@@ -76,7 +76,7 @@
             android:id="@+id/radiogroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button_forgotpass"
+            android:layout_below="@id/button_forgot"
             android:orientation="horizontal"
             android:padding="10dp"
             android:layout_centerHorizontal="true">
@@ -111,9 +111,9 @@
         android:id="@+id/button_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SIGN UP"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="SIGN UP" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
