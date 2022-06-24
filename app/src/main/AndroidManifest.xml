@@ -12,16 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalActivity">
         <activity
-            android:name=".AdminQuotes"
-            android:exported="false" />
-        <activity
-            android:name=".AdminExercise"
-            android:exported="false" />
-        <activity
             android:name=".AdminDatabase"
-            android:exported="false" />
-        <activity
-            android:name=".AdminSeekHelp"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

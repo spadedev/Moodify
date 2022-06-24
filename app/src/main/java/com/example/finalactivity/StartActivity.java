@@ -44,6 +44,14 @@ public class StartActivity extends AppCompatActivity {
         _button_forgotpass = findViewById(R.id.button_forgot);
         fAuth = FirebaseAuth.getInstance();
 
+        _button_signup.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         _button_signin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -98,13 +106,6 @@ public class StartActivity extends AppCompatActivity {
 
         });
 
-        _button_signup.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
 
         _button_forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override

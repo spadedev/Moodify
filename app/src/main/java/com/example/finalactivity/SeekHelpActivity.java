@@ -12,21 +12,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class SeekHelpActivity extends AppCompatActivity {
 
-    private TextView title, content;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seek_help);
-
-        title = findViewById(R.id.seekhelptitle);
-        content = findViewById(R.id.seekhelpcontent);
-
-        String admintitle= getIntent().getStringExtra("keytitle");
-        String admincontent = getIntent().getStringExtra("keycontent");
-
-        title.setText(admintitle);
-        content.setText(admincontent);
 
 
 
