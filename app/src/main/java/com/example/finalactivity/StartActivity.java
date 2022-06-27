@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -47,8 +48,7 @@ public class StartActivity extends AppCompatActivity {
         _button_signup.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
 
@@ -98,9 +98,6 @@ public class StartActivity extends AppCompatActivity {
                             }
                         }
                     });
-
-                    Intent intent = new Intent(StartActivity.this, QuotesActivity.class);
-                    startActivity(intent);
                 }
             }
 
