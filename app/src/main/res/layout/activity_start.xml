@@ -36,7 +36,7 @@
         android:padding="20dp">
 
         <EditText
-            android:id="@+id/input_email"
+            android:id="@+id/Email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#30FED000"
@@ -48,24 +48,24 @@
             android:hint="Email" />
 
         <EditText
-            android:id="@+id/input_password"
+            android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#30FED000"
             android:padding="10dp"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/input_email"
+            android:layout_below="@+id/Email"
             android:layout_centerHorizontal="true"
             android:ems="20"
             android:inputType="textPassword"
             android:hint="Password" />
 
 
-        <Button
-            android:id="@+id/button_forgot"
+        <TextView
+            android:id="@+id/forgotpassword"
             android:layout_width="150dp"
             android:layout_height="30dp"
-            android:layout_below="@+id/input_password"
+            android:layout_below="@+id/password"
             android:layout_alignParentRight="true"
             android:background="@color/white"
             android:text="forgot password?"
@@ -73,18 +73,18 @@
             android:textSize="9dp" />
 
         <Button
-            android:id="@+id/button_signin"
+            android:id="@+id/loginBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/radiogroup"
             android:layout_centerHorizontal="true"
-            android:text="SIGN IN" />
+            android:text="Login" />
 
         <RadioGroup
             android:id="@+id/radiogroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button_forgot"
+            android:layout_below="@id/forgotpassword"
             android:orientation="horizontal"
             android:padding="10dp"
             android:layout_centerHorizontal="true">
@@ -107,29 +107,20 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/createText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ARE YOU A NEW MOODIFY USER?"
-        android:layout_marginTop="20dp"
         android:layout_below="@+id/relativelayout2"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/button_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:text="SIGN UP" />
+        android:text="New Here? Create Account" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:visibility="invisible"
-        android:layout_below="@id/button_signup"
+        android:visibility="invisible"
+        android:layout_below="@id/createText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"/>
 

@@ -17,16 +17,31 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/seekhelptitle"
+        android:id="@+id/quote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"/>
+        android:layout_below="@id/title"
+        android:text="You don't have to struggle in silence."
+        android:layout_centerHorizontal="true"/>
 
     <TextView
         android:id="@+id/seekhelpcontent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/seekhelptitle"/>
+        android:layout_below="@id/quote"
+        android:text="National Mental Health Hotline:"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seekhelpcontent"
+        android:text="Luzon wide landline:                       1153 \n
+GLOBE/ TM Subscribers:             0966-351-4518 \n
+                                                           0917-899-8727 \n
+                                                           0917-899-USAP \n
+SMART/ SUN/ TNT Subscribers: 0908-639-2672"
+        android:layout_centerHorizontal="true"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -28,12 +29,14 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
     public static final String TAG = "TAG";
-    EditText mName, mEmail, mPassword;
-    Button mRegisterButton, mSignInButton;
+    EditText mFullName,mEmail,mPassword,mPhone;
+    Button mRegisterBtn;
+    TextView mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
     FirebaseFirestore fStore;
     String userID;
+
 
 
     @Override
@@ -41,88 +44,92 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mName = findViewById(R.id.register_name);
-        mEmail = findViewById(R.id.register_email);
-        mPassword = findViewById(R.id.register_password);
-        mRegisterButton = findViewById(R.id.button_register);
-        mSignInButton = findViewById(R.id.button_signin);
+        mFullName   = findViewById(R.id.fullName);
+        mEmail      = findViewById(R.id.Email);
+        mPassword   = findViewById(R.id.password);
+        mPhone      = findViewById(R.id.phone);
+        mRegisterBtn= findViewById(R.id.registerBtn);
+        mLoginBtn   = findViewById(R.id.createText);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
-        if (fAuth.getCurrentUser() != null) {
-            startActivity(new Intent (getApplicationContext(), QuotesActivity.class));
+        if(fAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(),QuotesActivity.class));
             finish();
         }
 
 
-        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+        mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
-                final String name = mName.getText().toString();
+                final String fullName = mFullName.getText().toString();
+                final String phone    = mPhone.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
+                if(TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required.");
                     return;
                 }
 
-                if (TextUtils.isEmpty(password)) {
-                    mEmail.setError("Password is Required.");
+                if(TextUtils.isEmpty(password)){
+                    mPassword.setError("Password is Required.");
                     return;
                 }
 
-                if(password.length()<6){
-                    mPassword.setError("Password must be >= 6 characters.");
+                if(password.length() < 6){
+                    mPassword.setError("Password Must be >= 6 Characters");
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                //register in firebase
+                // register the user in firebase
 
-                fAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
-                            // Send verification link
+                            // send verification link
+
                             FirebaseUser fuser = fAuth.getCurrentUser();
                             fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(RegisterActivity.this, "Verification email has been sent.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "onFailure: Email not sent." + e.getMessage());
+                                    Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
                                 }
                             });
 
                             Toast.makeText(RegisterActivity.this, "User Created.", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("users").document(userID);
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("fname", name);
-                            user.put("email", email);
+                            Map<String,Object> user = new HashMap<>();
+                            user.put("fName",fullName);
+                            user.put("email",email);
+                            user.put("phone",phone);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "OnSuccess: User profile is created for "+ userID);
+                                    Log.d(TAG, "onSuccess: user Profile is created for "+ userID);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.d(TAG, "OnFailure: " + e.toString());
+                                    Log.d(TAG, "onFailure: " + e.toString());
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(), QuotesActivity.class));
-                        }
-                        else{
-                            Toast.makeText(RegisterActivity.this,"Error!" + task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),QuotesActivity.class));
+
+                        }else {
+                            Toast.makeText(RegisterActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -130,12 +137,13 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        mSignInButton.setOnClickListener(new View.OnClickListener(){
+
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                startActivity(new Intent(getApplicationContext(), StartActivity.class));
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),StartActivity.class));
             }
         });
-
     }
 }
