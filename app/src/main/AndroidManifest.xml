@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalActivity">
         <activity
+            android:name=".CustomLayout"
+            android:exported="false" />
+        <activity
             android:name=".EditProfile"
             android:exported="false" />
         <activity
@@ -62,6 +65,14 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <receiver android:name=".NotificationReceiver"
+            android:permission="@string/app_name"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.finalactivity" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
