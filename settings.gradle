@@ -14,5 +14,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "FinalActivity"
+rootProject.name = "Moodify"
 include ':app'

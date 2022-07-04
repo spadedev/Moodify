@@ -7,6 +7,7 @@
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/drawable/ic_baseline_homepage.xml" value="0.2595" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/drawable/ic_baseline_moodchart.xml" value="0.2595" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2595" />
+        <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/drawable/item.xml" value="0.2795" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/drawable/rounded_corner.xml" value="0.1" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/drawable/selector.xml" value="0.1125" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/drawable/smiley_super_happy.xml" value="0.1" />
@@ -19,7 +20,7 @@
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_covid.xml" value="0.3008849557522124" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_custom_layout.xml" value="0.1388888888888889" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_edit_profile.xml" value="0.1675925925925926" />
-        <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_emotions.xml" value="0.2247191011235955" />
+        <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_emotions.xml" value="0.25" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_exercise_journal.xml" value="0.33" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_journal.xml" value="0.3140625" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_main.xml" value="0.33" />
@@ -29,6 +30,7 @@
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_seek_help.xml" value="0.25" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/activity_start.xml" value="0.2" />
+        <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/item.xml" value="0.1" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/layout/journal_itemview.xml" value="0.33" />
         <entry key="..\:/Users/Leoncio/AndroidStudioProjects/FinalActivity/app/src/main/res/menu/menu_navigation.xml" value="0.25" />
       </map>

@@ -30,7 +30,7 @@ public class QuotesActivity extends AppCompatActivity {
     }
 
     public void openMainActivity(){
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, EmotionsActivity.class);
         startActivity(intent);
     }
 }
