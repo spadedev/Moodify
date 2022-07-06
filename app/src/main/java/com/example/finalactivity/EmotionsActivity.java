@@ -31,10 +31,10 @@ public class EmotionsActivity extends AppCompatActivity {
 
     FirebaseFirestore fStore;
     FirebaseAuth fAuth;
-    String userID;
+    String UserID;
     CharSequence desc;
 
-    Button save,btn;
+    Button save;
     ImageView mood;
     TextView description;
 
@@ -57,7 +57,6 @@ public class EmotionsActivity extends AppCompatActivity {
         fStore=FirebaseFirestore.getInstance();
 
         save = findViewById(R.id.saveBtn);
-        btn = findViewById(R.id.suggestionsbtn);
         mood = findViewById(R.id.moodDisplay);
         description = findViewById(R.id.description);
 
@@ -71,7 +70,6 @@ public class EmotionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mood.setImageResource(R.drawable.happy);
-                btn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -79,7 +77,6 @@ public class EmotionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mood.setImageResource(R.drawable.superhappy);
-                btn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -87,7 +84,6 @@ public class EmotionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mood.setImageResource(R.drawable.sad);
-                btn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -95,7 +91,6 @@ public class EmotionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mood.setImageResource(R.drawable.neutral);
-                btn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -103,7 +98,6 @@ public class EmotionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mood.setImageResource(R.drawable.angry);
-                btn.setVisibility(View.VISIBLE);
             }
         });
 
@@ -114,17 +108,17 @@ public class EmotionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 desc = description.getText();
-                userID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
+                UserID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
 
                 FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-                DatabaseReference reference = rootNode.getReference("users").child(userID);
+                DatabaseReference reference = rootNode.getReference("users").child(UserID);
                 Map<String, String> map = new HashMap<>();
                 map.put("time",currentTime.toString());
                 map.put("description",desc.toString());
                 //map.put(currentTime.toString(),desc);
                 reference.push().setValue(map);
 
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 

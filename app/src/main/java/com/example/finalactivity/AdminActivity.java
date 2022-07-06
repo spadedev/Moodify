@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class AdminActivity extends AppCompatActivity {
 
-    Button database, exercise, quotes, seekhelp;
+    Button database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

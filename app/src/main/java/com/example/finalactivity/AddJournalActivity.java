@@ -29,6 +29,7 @@ public class AddJournalActivity extends AppCompatActivity {
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();
 
+        // Adding journal entry
         saveBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -48,6 +49,7 @@ public class AddJournalActivity extends AppCompatActivity {
             }
         });
 
+        // Bottom navigation view
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.homepage);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){

@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.util.Log;
 import android.view.View;
@@ -31,14 +32,12 @@ import javax.annotation.Nullable;
 
 public class OptionActivity<StorageReference> extends AppCompatActivity {
 
-    TextView fullName,email,phone,verifyMsg;
+    TextView fullName,email;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    String userId;
-    Button resendCode;
-    Button resetPassLocal, changeProfile;
+    String UserId;
     FirebaseUser user;
-    StorageReference storageReference;
+
 
 
     @Override
@@ -46,9 +45,10 @@ public class OptionActivity<StorageReference> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
 
+        //Bottom navigation view
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.options);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener(){
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
@@ -68,127 +68,42 @@ public class OptionActivity<StorageReference> extends AppCompatActivity {
                 return false;
             }
         });
-        
+
 
         fullName = findViewById(R.id.profileName);
-        email    = findViewById(R.id.profileEmail);
-        resetPassLocal = findViewById(R.id.resetPasswordLocal);
-        changeProfile = findViewById(R.id.changeProfile);
+        email = findViewById(R.id.profileEmail);
 
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        storageReference = (StorageReference) FirebaseStorage.getInstance().getReference();
 
 
-        resendCode = findViewById(R.id.resendCode);
-        verifyMsg = findViewById(R.id.verifyMsg);
-
-
-        userId = fAuth.getCurrentUser().getUid();
+        UserId = fAuth.getCurrentUser().getUid();
         user = fAuth.getCurrentUser();
 
-        if(!user.isEmailVerified()){
-            verifyMsg.setVisibility(View.VISIBLE);
-            resendCode.setVisibility(View.VISIBLE);
 
-            resendCode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View v) {
-
-                    user.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(v.getContext(), "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("tag", "onFailure: Email not sent " + e.getMessage());
-                        }
-                    });
-                }
-            });
-        }
-
-        
-
-        DocumentReference documentReference = fStore.collection("users").document(userId);
+        // Getting data in firebase
+        DocumentReference documentReference = fStore.collection("users").document(UserId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
-                    phone.setText(documentSnapshot.getString("phone"));
+                if (documentSnapshot.exists()) {
                     fullName.setText(documentSnapshot.getString("fName"));
                     email.setText(documentSnapshot.getString("email"));
 
-                }else {
+                } else {
                     Log.d("tag", "onEvent: Document do not exists");
                 }
             }
         });
 
-        changeProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent (getApplicationContext(),  EditProfile.class));
-            }
-        });
-
-        resetPassLocal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final EditText resetPassword = new EditText(v.getContext());
-
-                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
-                passwordResetDialog.setTitle("Reset Password ?");
-                passwordResetDialog.setMessage("Enter New Password > 6 Characters long.");
-                passwordResetDialog.setView(resetPassword);
-
-                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // extract the email and send reset link
-                        String newPassword = resetPassword.getText().toString();
-                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(OptionActivity.this, "Password Reset Successfully.", Toast.LENGTH_SHORT).show();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(OptionActivity.this, "Password Reset Failed.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
-
-                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // close
-                    }
-                });
-
-                passwordResetDialog.create().show();
-
-            }
-        });
     }
 
+        public void logout(View view){
+            FirebaseAuth.getInstance().signOut();//logout
+            startActivity(new Intent(getApplicationContext(), StartActivity.class));
+            finish();
 
-    
 
-    public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();//logout
-        startActivity(new Intent(getApplicationContext(),StartActivity.class));
-        finish();
     }
-
-
-
-
-        
 }

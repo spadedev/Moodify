@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,7 @@ public class MoodChartActivity extends AppCompatActivity {
     private MyAdapter2 adapter;
     FirebaseAuth fAuth;
     String UserID;
+    FirebaseFirestore fStore;
 
 
     @Override
@@ -72,7 +74,7 @@ public class MoodChartActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         fAuth = FirebaseAuth.getInstance();
-        //fStore = FirebaseFirestore.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         UserID = fAuth.getCurrentUser().getUid();
 
         reference.child(UserID).addValueEventListener(new ValueEventListener() {
@@ -82,13 +84,13 @@ public class MoodChartActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Model model = dataSnapshot.getValue(Model.class);
                     String xyz = (String) dataSnapshot.child("description").getValue();
-                    Model model1 = null;
-                    model.time = (String) dataSnapshot.child("time").getValue();
+                    //Model model1 = null;
+                    //model.time = (String) dataSnapshot.child("time").getValue();
                     model.description = xyz;
-                    model.description = dataSnapshot.child("description").getValue();
-                    Toast.makeText(MoodChartActivity.this, "Description: "+xyz, Toast.LENGTH_SHORT).show();
+                    //model.description = dataSnapshot.child("description").getValue();
+                    //Toast.makeText(MoodChartActivity.this, "Description: "+xyz, Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(MoodChartActivity.this, "Description: "+dataSnapshot.child("description").getValue(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MoodChartActivity.this, "Description: "+dataSnapshot.child("description").getValue(), Toast.LENGTH_SHORT).show();
                     list.add(model);
                 }
                 adapter.notifyDataSetChanged();

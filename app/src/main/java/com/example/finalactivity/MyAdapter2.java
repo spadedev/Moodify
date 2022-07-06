@@ -31,7 +31,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyAdapter2.MyViewHolder holder, int position) {
         Model model = mList.get(position);
         holder.descri.setText(model.getDesc());
-        //holder.desc.setText(model.getDesc());
         holder.time.setText(model.getTime());
 
 
