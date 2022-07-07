@@ -79,7 +79,7 @@ public class StartActivity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),QuotesActivity.class));
                         }else {
                             Toast.makeText(StartActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.INVISIBLE);
+                            progressBar.setVisibility(View.GONE);
                         }
 
                     }
