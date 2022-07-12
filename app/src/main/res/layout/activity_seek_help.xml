@@ -35,11 +35,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/seekhelpcontent"
-        android:text="Luzon wide landline:                       1153 \n
-GLOBE/ TM Subscribers:             0966-351-4518 \n
-                                                           0917-899-8727 \n
-                                                           0917-899-USAP \n
-SMART/ SUN/ TNT Subscribers: 0908-639-2672"
+        android:text="Luzon wide landline:"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/whyseekhelp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Why seek help?"
+        android:layout_above="@id/bottom_navigation"
         android:layout_centerHorizontal="true"/>
 
 

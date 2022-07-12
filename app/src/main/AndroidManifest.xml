@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalActivity">
         <activity
+            android:name=".PreventionTips"
+            android:exported="false" />
+        <activity
+            android:name=".WhySeekHelp"
+            android:exported="false" />
+        <activity
+            android:name=".AdminLogin"
+            android:exported="false" />
+        <activity
             android:name=".LogoActivity"
             android:exported="true">
             <intent-filter>
@@ -31,8 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".StartActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".EmotionsActivity"
             android:exported="false" />

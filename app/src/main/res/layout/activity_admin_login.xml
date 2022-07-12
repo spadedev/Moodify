@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/btn_"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FED000"
+    android:padding="40dp"
+    tools:context=".AdminLogin">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Admin Login"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:id="@+id/img_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <RelativeLayout
+                android:id="@+id/relativelayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/img_logo"
+                android:background="@drawable/rounded_corner"
+                android:padding="20dp">
+
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#30FED000"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:ems="20"
+                    android:inputType="textPassword"
+                    android:hint="Password" />
+
+
+                <Button
+                    android:id="@+id/loginBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/password"
+                    android:layout_centerHorizontal="true"
+                    android:text="Login" />
+
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
