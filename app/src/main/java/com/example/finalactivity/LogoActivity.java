@@ -21,7 +21,7 @@ public class LogoActivity extends AppCompatActivity {
 
         login = findViewById(R.id.login);
         register = findViewById(R.id.register);
-        admin = findViewById(R.id.register);
+        admin = findViewById(R.id.admin);
 
         admin.setOnClickListener(new View.OnClickListener() {
             @Override
