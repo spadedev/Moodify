@@ -29,7 +29,6 @@ public class StartActivity extends AppCompatActivity {
     EditText mEmail,mPassword;
     Button mLoginBtn;
     TextView mCreateBtn;
-    ProgressBar progressBar;
     FirebaseAuth fAuth;
 
     @Override
@@ -39,7 +38,6 @@ public class StartActivity extends AppCompatActivity {
 
         mEmail = findViewById(R.id.Email);
         mPassword = findViewById(R.id.password);
-        progressBar = findViewById(R.id.progressBar);
         fAuth = FirebaseAuth.getInstance();
         mLoginBtn = findViewById(R.id.loginBtn);
         mCreateBtn = findViewById(R.id.createText);
@@ -67,7 +65,6 @@ public class StartActivity extends AppCompatActivity {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
 
                 // authenticate the user
 
@@ -79,7 +76,7 @@ public class StartActivity extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(),QuotesActivity.class));
                         }else {
                             Toast.makeText(StartActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            progressBar.setVisibility(View.GONE);
+
                         }
 
                     }

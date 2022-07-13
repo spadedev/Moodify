@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
@@ -117,6 +118,7 @@ public class EmotionsActivity extends AppCompatActivity {
                 map.put("description",desc.toString());
                 //map.put(currentTime.toString(),desc);
                 reference.push().setValue(map);
+
 
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
