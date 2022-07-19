@@ -25,6 +25,7 @@ import java.util.Map;
 import io.realm.Realm;
 
 public class AddJournalActivity extends AppCompatActivity {
+    String UserID;
 
 
     @Override
@@ -51,9 +52,7 @@ public class AddJournalActivity extends AppCompatActivity {
                     notebookRef.add(new Journal(title, description, createdTime));
                     Toast.makeText(AddJournalActivity.this, "Journal added.", Toast.LENGTH_SHORT).show();
                     finish();
-
                 }
-
             }
         });
 
@@ -82,5 +81,6 @@ public class AddJournalActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 }
