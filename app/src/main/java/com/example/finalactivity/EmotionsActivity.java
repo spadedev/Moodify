@@ -1,15 +1,20 @@
 package com.example.finalactivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,6 +28,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class EmotionsActivity extends AppCompatActivity {
+    public static final String TAG = "TAG";
 
     RelativeLayout happy;
     RelativeLayout excited;
@@ -38,9 +44,6 @@ public class EmotionsActivity extends AppCompatActivity {
     Button save;
     ImageView mood;
     TextView description;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,14 +114,36 @@ public class EmotionsActivity extends AppCompatActivity {
                 desc = description.getText();
                 UserID = Objects.requireNonNull(fAuth.getCurrentUser()).getUid();
 
-                FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-                DatabaseReference reference = rootNode.getReference("users").child(UserID);
-                Map<String, String> map = new HashMap<>();
-                map.put("time",currentTime.toString());
-                map.put("description",desc.toString());
-                //map.put(currentTime.toString(),desc);
-                reference.push().setValue(map);
+                if(TextUtils.isEmpty(desc)){
+                    description.setError("Description is required!");
+                    return;
+                }
 
+                //FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+                //DatabaseReference reference = rootNode.getReference("users").child(UserID);
+                //Map<String, String> map = new HashMap<>();
+                //map.put("time",currentTime.toString());
+                //map.put("description",desc.toString());
+                // map.put(currentTime.toString(),desc);
+                //reference.push().setValue(map);
+
+                UserID = fAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fStore.collection("users").document(UserID).collection("emotions").document(String.valueOf(currentTime));
+                Map<String,Object> user = new HashMap<>();
+                user.put("time",currentTime.toString());
+                user.put("description",desc.toString());
+
+                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "onSuccess: user Profile is created for "+ UserID);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e.toString());
+                    }
+                });
 
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }

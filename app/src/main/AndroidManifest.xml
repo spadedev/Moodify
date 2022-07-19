@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalActivity">
         <activity
+            android:name=".AddJournalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JournalActivity"
+            android:exported="false" />
+        <activity
             android:name=".PreventionTips"
             android:exported="false" />
         <activity
@@ -45,9 +51,6 @@
             android:name=".EmotionsActivity"
             android:exported="false" />
         <activity
-            android:name=".AddJournalActivity"
-            android:exported="false" />
-        <activity
             android:name=".QuotesActivity"
             android:exported="false" />
         <activity
@@ -64,9 +67,6 @@
             android:exported="false" />
         <activity
             android:name=".ExerciseJournal"
-            android:exported="false" />
-        <activity
-            android:name=".JournalActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
