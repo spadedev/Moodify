@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
 public class MoodChartActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    FirebaseUser user;
+    FirebaseUser users;
     private MyAdapter2 adapter;
     FirebaseAuth fAuth;
     String UserID;

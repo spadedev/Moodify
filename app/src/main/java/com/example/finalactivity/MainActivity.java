@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void openJournalActivity(){
-        Intent intent = new Intent(this, JournalActivity.class);
+        Intent intent = new Intent(this, NoteActivity.class);
         startActivity(intent);
     }
 
