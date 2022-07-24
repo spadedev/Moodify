@@ -33,7 +33,7 @@
         android:layout_below="@id/toolbarofnotedetail"
         android:background="#faf7f7"
         android:gravity="top|left"
-        android:hint="Enter your note content here"
+        android:hint="Enter your journal content here"
         android:padding="15dp"
         android:textColor="@color/black"
         android:textSize="17sp">

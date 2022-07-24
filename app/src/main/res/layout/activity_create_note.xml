@@ -19,7 +19,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:hint="Enter your note title here"
+            android:hint="Enter your journal title here"
             android:id="@+id/createtitleofnote">
 
         </EditText>
@@ -33,7 +33,7 @@
         android:layout_below="@id/toolbarofcreatenote"
         android:background="#faf7f7"
         android:gravity="top|left"
-        android:hint="Enter your note content here"
+        android:hint="Enter your journal content here"
         android:padding="15dp"
         android:textColor="@color/black"
         android:textSize="15sp">

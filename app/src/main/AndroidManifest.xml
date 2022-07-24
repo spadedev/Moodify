@@ -45,9 +45,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AdminDatabase"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
