@@ -2,18 +2,14 @@ package com.example.finalactivity;
 
 public class firebasemodel {
 
-    private String title;
-    private String content;
-    private String date;
-    private int isImportant;
+    String title;
+    String content;
+    String date;
 
-    public int getIsImportant() {
-        return isImportant;
+    public firebasemodel(){
+
     }
 
-    public void setIsImportant(int isImportant) {
-        this.isImportant = isImportant;
-    }
 
     public String getTitle() {
         return title;
@@ -39,14 +35,11 @@ public class firebasemodel {
         this.date = date;
     }
 
-    public firebasemodel(){
-
-    }
 
     public firebasemodel(String title,String content,String date,int isImportant){
         this.title=title;
         this.content=content;
         this.date=date;
-        this.isImportant=isImportant;
+
     }
 }
