@@ -22,11 +22,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -43,6 +46,7 @@ public class MoodChartActivity extends AppCompatActivity {
     FirebaseAuth fAuth;
     String UserID;
     FirebaseFirestore fStore;
+    ArrayList<Model> mList;
 
 
     @Override
@@ -77,9 +81,8 @@ public class MoodChartActivity extends AppCompatActivity {
         recyclerView=findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        ArrayList<Model> list;
-        list=new ArrayList<>();
-        adapter=new MyAdapter2(this,list);
+        mList = new ArrayList<Model>();
+        adapter=new MyAdapter2(this,mList);
         recyclerView.setAdapter(adapter);
 
         fAuth = FirebaseAuth.getInstance();
@@ -88,26 +91,32 @@ public class MoodChartActivity extends AppCompatActivity {
 
         Date currentTime = Calendar.getInstance().getTime();
 
-        DocumentReference documentReference = fStore.collection("users").document(UserID).collection("emotions").document(String.valueOf(currentTime));
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if (documentSnapshot.exists()) {
-                    Model model = documentSnapshot.toObject(Model.class);
-                    String xyz = documentSnapshot.getString("description");
-                    model.time = documentSnapshot.getString("time");
-                    model.description = xyz;
-
-                    list.add(model);
-
-                } else {
-                    Log.d("tag", "onEvent: Document do not exists");
-                }
-                adapter.notifyDataSetChanged();
-            }
-        });
+        EventChangeListener();
 
     }
+
+    private void EventChangeListener(){
+        fStore.collection("users").document(fAuth.getCurrentUser().getUid()).collection("emotions").orderBy("time", Query.Direction.DESCENDING)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@androidx.annotation.Nullable QuerySnapshot value, @androidx.annotation.Nullable FirebaseFirestoreException error) {
+
+                        if (error != null) {
+                            Log.e("Firestore error", error.getMessage());
+                            return;
+                        }
+
+                        for (DocumentChange dc : value.getDocumentChanges()) {
+                            if (dc.getType() == DocumentChange.Type.ADDED) {
+                                mList.add(dc.getDocument().toObject(Model.class));
+                            }
+                            adapter.notifyDataSetChanged();
+                        }
+
+                    }
+                });
+    }
+
 }
 
 
