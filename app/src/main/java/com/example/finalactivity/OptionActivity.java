@@ -86,12 +86,14 @@ public class OptionActivity<StorageReference> extends AppCompatActivity {
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if (documentSnapshot.exists()) {
-                    fullName.setText(documentSnapshot.getString("fName"));
-                    email.setText(documentSnapshot.getString("email"));
+                if (e == null){
+                    if (documentSnapshot.exists()) {
+                        fullName.setText(documentSnapshot.getString("fName"));
+                        email.setText(documentSnapshot.getString("email"));
 
-                } else {
-                    Log.d("tag", "onEvent: Document do not exists");
+                    } else {
+                        Log.d("tag", "onEvent: Document do not exists");
+                    }
                 }
             }
         });
