@@ -117,6 +117,7 @@ public class NoteActivity extends AppCompatActivity {
 
         mrecyclerView.setAdapter(noteAdapter);
 
+
         EventChangeListener();
     }
 
@@ -146,4 +147,5 @@ public class NoteActivity extends AppCompatActivity {
                     }
                 });
     }
+
 }

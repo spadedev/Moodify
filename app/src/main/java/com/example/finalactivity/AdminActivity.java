@@ -28,6 +28,7 @@ public class AdminActivity extends AppCompatActivity {
     AdminAdapter adminAdapter;
     FirebaseFirestore db;
     ProgressDialog progressDialog;
+    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,14 @@ public class AdminActivity extends AppCompatActivity {
         adminAdapter = new AdminAdapter(AdminActivity.this , adminUserArrayList);
 
         recyclerView.setAdapter(adminAdapter);
+
+        logout = findViewById(R.id.button2);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LogoActivity.class));
+            }
+        });
 
         EventChangeListener();
 

@@ -12,14 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar">
         <activity
-            android:name=".NoteDetails"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity
-            android:name=".EditNoteActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity
             android:name=".NoteActivity"
             android:exported="false" />
         <activity

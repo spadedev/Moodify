@@ -1,13 +1,22 @@
 package com.example.finalactivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -15,6 +24,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
 
     Context context;
     ArrayList<firebasemodel> noteArrayList;
+    String UserID;
 
     public NoteAdapter(Context context, ArrayList<firebasemodel> noteArrayList) {
         this.context = context;
@@ -46,6 +56,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.MyViewHolder> 
     public static class MyViewHolder extends  RecyclerView.ViewHolder{
 
         TextView title, content, date;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
